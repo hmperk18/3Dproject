@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnRoom : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] int doorPos; // 0 = top, 1 = bot, 2 = left, 3 = right 
+    [SerializeField] int doornum; // number of doors
     [SerializeField] GameObject[] rooms; 
 
     void Start()
