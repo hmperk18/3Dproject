@@ -511,18 +511,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: hallway
       objectReference: {fileID: 0}
-    - target: {fileID: 3080809149444290485, guid: d8b3704f7125f8247b9376d5e84d259e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080809150129093353, guid: d8b3704f7125f8247b9376d5e84d259e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080809150540791817, guid: d8b3704f7125f8247b9376d5e84d259e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3263846270755417898, guid: d8b3704f7125f8247b9376d5e84d259e, type: 3}
       propertyPath: m_RootOrder
       value: 1
