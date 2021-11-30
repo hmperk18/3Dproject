@@ -10,7 +10,7 @@ public class SpawnRoom : MonoBehaviour
 
     void Start()
     {
-        int i = Random.Range(0, rooms.Length);
+        int i = Random.Range(0, rooms.Length-1); // Note: Range is min inclusive and max inclusive
         GameObject room = Instantiate(rooms[i], transform.position, transform.rotation);
         room.transform.parent = transform;
         if(room.layer == LayerMask.NameToLayer("ItemRoom"))
