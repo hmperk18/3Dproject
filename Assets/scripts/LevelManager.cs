@@ -24,9 +24,6 @@ public class LevelManager : MonoBehaviour
 
     private void _AddRoom(GameObject room)
     {
-        itemRooms[roomsIdx] = room;
-        roomsIdx += 1;
-
         if(roomsIdx >= maxRooms)
         {
             // spawn some items in the last few item rooms
@@ -35,6 +32,9 @@ public class LevelManager : MonoBehaviour
             {
                 itemRooms[i].GetComponent<ItemRoom>().SpawnItem();
             }
+        } else {
+            itemRooms[roomsIdx] = room;
+            roomsIdx += 1;
         }
     }
 
