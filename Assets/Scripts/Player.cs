@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// If we want to use this script, attach it to FirstPersonController
+// This script is for testing.
+// This script just displays the amount of coins the player got.
+// If we want to use this script, attach it to FirstPersonController.
 public class Player : MonoBehaviour
 {
     public int points = 0;
