@@ -63,7 +63,7 @@ public class DoorScript : MonoBehaviour
     {
         if(open)
         {
-            door.rotation = this.open;
+            door.localRotation = this.open;
             isClosed = true;
         } else
         {

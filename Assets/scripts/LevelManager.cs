@@ -28,7 +28,10 @@ public class LevelManager : MonoBehaviour
         Debug.Log(roomsIdx);
         
         itemRooms[roomsIdx] = room;
-        roomsIdx += 1;
+        roomsIdx += 1; 
+
+        // on the last room the idx will be increased and match maxRooms
+            // when the last room is added spawn the items
         if (roomsIdx == maxRooms)
         {
             // spawn some items in the last few item rooms
