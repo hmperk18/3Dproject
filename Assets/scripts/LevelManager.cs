@@ -24,17 +24,20 @@ public class LevelManager : MonoBehaviour
 
     private void _AddRoom(GameObject room)
     {
-        if(roomsIdx >= maxRooms)
+        Debug.Log("spawned room");
+        Debug.Log(roomsIdx);
+        
+        itemRooms[roomsIdx] = room;
+        roomsIdx += 1;
+        if (roomsIdx == maxRooms)
         {
             // spawn some items in the last few item rooms
                 // took long to add to more rooms away from the center
             for(int i = maxRooms - 1; i >= 1; i--)
             {
+                Debug.Log("spawn item");
                 itemRooms[i].GetComponent<ItemRoom>().SpawnItem();
             }
-        } else {
-            itemRooms[roomsIdx] = room;
-            roomsIdx += 1;
         }
     }
 
