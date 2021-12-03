@@ -21,6 +21,10 @@ public class SpawnRoom : MonoBehaviour
         if(SpawnedRoom.layer == LayerMask.NameToLayer("ItemRoom"))
         {
             LevelManager.AddRoom(SpawnedRoom);
+            
+            // the item rooms do not have a win condition, just should be open
+            roomComplete = true;
+            transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
         }
     }
 
