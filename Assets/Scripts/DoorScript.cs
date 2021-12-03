@@ -5,6 +5,18 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     private Animator doorAnimatorRef;
+    [SerializeField] SpawnRoom parent;
+    [SerializeField] Transform door; // the door to open/close
+    Quaternion open;
+    Quaternion close;
+    bool isClosed = false;
+
+    private void Awake()
+    {
+        parent = GetComponentInParent<SpawnRoom>();
+        open = Quaternion.Euler(0, 90, 0); // save the initial rotation
+        close = transform.rotation; // the parents rotation is 0,0,0 = closed
+    }
 
     void Start()
     {
@@ -17,6 +29,7 @@ public class DoorScript : MonoBehaviour
 
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         // Open door
@@ -27,14 +40,35 @@ public class DoorScript : MonoBehaviour
             doorAnimatorRef = animator;
             doorAnimatorRef.SetBool("isOpen", true);
         }
-    }
+    }*/
 
     private void OnTriggerExit(Collider other)
     {
-        // Close door
-        if (other.gameObject.CompareTag("Door"))
+        // Close door if the player enters and the room is not complete
+        if (other.gameObject.CompareTag("Player") && !parent.roomComplete)
         {
-            doorAnimatorRef.SetBool("isOpen", false);
+            setDoor(false);
+
+            // prevent other possible door interactions
+            transform.GetComponent<BoxCollider>().enabled = false;
+
+            // get the doors to open when the player enters the room
+            parent.GetDoors();
+            StartCoroutine(parent.Test());
+        }
+    }
+
+    // open = true to open the door, false to close
+    public void setDoor(bool open)
+    {
+        if(open)
+        {
+            door.rotation = this.open;
+            isClosed = true;
+        } else
+        {
+            door.rotation = close;
+            isClosed = true;
         }
     }
 }

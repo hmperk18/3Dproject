@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -274,7 +274,7 @@ Transform:
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -367,7 +367,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -509,63 +509,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2574be373238681499dc93dcd0296701, type: 3}
---- !u!1001 &1440707940
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2735990797589810580, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_Name
-      value: hallway_test
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 34.642143
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.3600054
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.7021523
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3365281350698686254, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: df25201100dc7334e82b74a5bea500a2, type: 3}
 --- !u!1 &1575703170
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +555,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2043071545
 PrefabInstance:
@@ -627,7 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 3}
       propertyPath: m_LocalPosition.x
