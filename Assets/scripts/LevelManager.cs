@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     private int currKeys; // current hearts
     [SerializeField] Image[] keys = new Image[winCondition]; // key icons
 
+    [SerializeField] GameObject winPanel;
 
     private void Awake()
     {
@@ -48,7 +49,7 @@ public class LevelManager : MonoBehaviour
                 // took long to add to more rooms away from the center
             for(int i = winCondition; i >= 1; i--)
             {
-                itemRooms[i].GetComponent<ItemRoom>().SpawnItem();
+                itemRooms[i].GetComponent<ItemRoom>().SpawnItem(i);
             }
         }
     }
@@ -67,11 +68,20 @@ public class LevelManager : MonoBehaviour
         instance._WinGame();
     }
 
+    // Book color corresponds to the idx in the keys list
+    public static void IncreaseScore(int book_color)
+    {
+
+        instance._IncreaseScore(book_color);
+    }
+
     // private method to increase score
-    private void _IncreaseScore()
+    private void _IncreaseScore(int book_color)
     {
         currKeys += 1;
-        //scoreText.text = "Croissants: " + currKeys.ToString() + "/" + winCondition.ToString();
+        // turn on correct book color
+        keys[book_color].enabled = true;
+
         checkWin();
     }
 
@@ -100,7 +110,7 @@ public class LevelManager : MonoBehaviour
         if (currKeys == winCondition)
         {
             // todo
-
+            _WinGame();
         }
     }
 
@@ -108,5 +118,7 @@ public class LevelManager : MonoBehaviour
     private void _WinGame()
     {
         //todo
+        player.GetComponent<CharacterMotor>().canControl = false;
+        winPanel.SetActive(true);
     }
 }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // This script is attached to GoldCoin mesh
-public class Coin : MonoBehaviour
+public class CoinScript : MonoBehaviour
 {
+    [SerializeField] int book_color; 
 
     // Start is called before the first frame update
     void Start()
@@ -15,17 +16,18 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Rotating the coin
-        transform.Rotate(90 * Time.deltaTime, 0, 0);
+        // Rotating the book
+        transform.Rotate(0, 90 * Time.deltaTime, 0);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            // Add 1 to points
-            other.gameObject.GetComponent<Player>().points++;
-            // Distory the coin 
+            // Add a book to the score
+            LevelManager.IncreaseScore(book_color);
+
+            // Destory the book 
             Destroy(gameObject);
         }
     }
