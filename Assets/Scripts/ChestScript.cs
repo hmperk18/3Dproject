@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ChestScript : MonoBehaviour
 {
+    public Rigidbody coinRef;
+
     private bool isInsideTrigger = false;
-    private bool isOpen = false;
+    // To avoid null reference error.
+    private bool visited = false;
     private Animator chestAnimatorRef;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Transform coinCreateRef;
 
     // Update is called once per frame
     void Update()
@@ -20,11 +19,16 @@ public class ChestScript : MonoBehaviour
         // collide with chest?
         if (isInsideTrigger == true)
         {
-            //if (Input.GetButtonDown("E"))
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("E") && !visited)
             {
-                isOpen = !isOpen;
-                chestAnimatorRef.SetBool("isOpen", isOpen);
+                chestAnimatorRef.SetBool("isOpen?", true);
+                GameObject.Find("OpenText").SetActive(false);
+                //visited = true;
+
+                // Create coin
+                Rigidbody coinInstance;
+                coinInstance = Instantiate(coinRef, coinCreateRef.position, coinCreateRef.rotation) as Rigidbody;
+                coinInstance.AddForce(Random.Range(-50, 50), 300f, -30f);
             }
         }
     }
@@ -37,6 +41,20 @@ public class ChestScript : MonoBehaviour
             Transform chestRef = other.transform.parent.Find("TreasureChest");
             Animator chestAnimator = chestRef.GetComponent<Animator>();
             chestAnimatorRef = chestAnimator;
+
+            coinCreateRef = other.transform.parent.Find("CoinCreatePoint");
+        }
+
+        if (other.gameObject.CompareTag("Pickup"))
+        {
+            Destroy(other.gameObject);
+            // GetComponent<Player>().points++;
+        }
+
+        if (coinRef == other)
+        {
+            Destroy(other.gameObject);
+            // GetComponent<Player>().points++;
         }
     }
 
