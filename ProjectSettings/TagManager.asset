@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Door
   - Chest
+  - Pickup
   layers:
   - Default
   - TransparentFX
