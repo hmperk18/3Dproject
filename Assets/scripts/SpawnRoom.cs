@@ -18,18 +18,10 @@ public class SpawnRoom : MonoBehaviour
         SpawnedRoom = Instantiate(rooms[i], transform.position, transform.rotation);
         SpawnedRoom.transform.parent = transform;
         int j = Random.Range(0, roomLayouts.Length);
-        Debug.Log(j);
-        Instantiate(roomLayouts[j], transform.position, transform.rotation);
+        Instantiate(roomLayouts[j], transform.position, transform.rotation).transform.parent = transform;
 
-        // when the room that has spawned is an ItemRoom add it to the list of possible item rooms
-        if(SpawnedRoom.layer == LayerMask.NameToLayer("ItemRoom"))
-        {
-            LevelManager.AddRoom(SpawnedRoom);
-            
-            // the item rooms do not have a win condition, just should be open
-            roomComplete = true;
-            transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
-        }
+        // increment the number of rooms spawned
+        LevelManager.AddRoom();
     }
 
     // Update is called once per frame
@@ -64,7 +56,7 @@ public class SpawnRoom : MonoBehaviour
     }
 
     // have puzzle gameobject call this function
-    private void CompleteRoom()
+    public void CompleteRoom()
     {
         foreach (DoorScript door in doors)
         {

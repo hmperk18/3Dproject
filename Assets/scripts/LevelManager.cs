@@ -7,18 +7,15 @@ public class LevelManager : MonoBehaviour
     static public LevelManager instance;
     [SerializeField] GameObject player; // reference to the player
 
-    static private int maxRooms = 4;
-    [SerializeField] GameObject[] itemRooms = new GameObject[maxRooms]; // list of possible item spawn locations
-    private int roomsIdx; // next free spot in the rooms list
-
     static private int maxHearts = 3; // number of hits
     private int currHearts; // current hearts
     [SerializeField] Image[] lives = new Image[maxHearts]; // heart icons
     [SerializeField] Sprite emptyHeart;
 
-    static public int winCondition = 3; // number of keys needed
-    private int currKeys; // current hearts
-    [SerializeField] Image[] keys = new Image[winCondition]; // key icons
+    static public int roomCount;  // number of rooms with books
+    private int currBooks; // current hearts
+    [SerializeField] Text scoreText; // visible score
+
 
     [SerializeField] GameObject winPanel;
 
@@ -27,34 +24,18 @@ public class LevelManager : MonoBehaviour
         // init vars
         currHearts = maxHearts;
         instance = this;
-        roomsIdx = 0;
     }
 
-    // add a room to the list of rooms
-    public static void AddRoom(GameObject room)
+    // increment room count
+    public static void AddRoom()
     {
-        instance._AddRoom(room);
+        instance._AddRoom();
     }
 
-    private void _AddRoom(GameObject room)
+    private void _AddRoom()
     {
-        itemRooms[roomsIdx] = room;
-        roomsIdx += 1; 
-
-        // on the last room the idx will be increased and match maxRooms
-            // when the last room is added spawn the items
-        if (roomsIdx == maxRooms)
-        {
-            // spawn some items in the last few item rooms
-                // took long to add to more rooms away from the center
-            for(int i = winCondition; i >= 1; i--)
-            {
-                itemRooms[i].GetComponent<ItemRoom>().SpawnItem(i);
-            }
-        }
+        roomCount++;
     }
-
-    //TODO: keys collected UI
     
     // player takes damage
     public static void Damaged()
@@ -69,19 +50,17 @@ public class LevelManager : MonoBehaviour
     }
 
     // Book color corresponds to the idx in the keys list
-    public static void IncreaseScore(int book_color)
+    public static void IncreaseScore()
     {
 
-        instance._IncreaseScore(book_color);
+        instance._IncreaseScore();
     }
 
     // private method to increase score
-    private void _IncreaseScore(int book_color)
+    private void _IncreaseScore()
     {
-        currKeys += 1;
-        // turn on correct book color
-        keys[book_color].enabled = true;
-
+        currBooks += 1;
+        scoreText.text = "x " + currBooks.ToString();
         checkWin();
     }
 
@@ -107,7 +86,7 @@ public class LevelManager : MonoBehaviour
     private void checkWin()
     {
         // open the door if score is enough
-        if (currKeys == winCondition)
+        if (currBooks == roomCount)
         {
             // todo
             _WinGame();

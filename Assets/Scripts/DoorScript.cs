@@ -54,7 +54,6 @@ public class DoorScript : MonoBehaviour
 
             // get the doors to open when the player enters the room
             parent.GetDoors();
-            StartCoroutine(parent.Test());
         }
     }
 

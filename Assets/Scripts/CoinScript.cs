@@ -5,7 +5,6 @@ using UnityEngine;
 // This script is attached to GoldCoin mesh
 public class CoinScript : MonoBehaviour
 {
-    [SerializeField] int book_color; 
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +24,11 @@ public class CoinScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Add a book to the score
-            LevelManager.IncreaseScore(book_color);
+            LevelManager.IncreaseScore();
+
+            // open door
+            // parent = "room setting" parent.parent = 
+            transform.parent.parent.GetComponent<SpawnRoom>().CompleteRoom();
 
             // Destory the book 
             Destroy(gameObject);
