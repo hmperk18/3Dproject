@@ -14,9 +14,12 @@ public class SpawnRoom : MonoBehaviour
     void Start()
     {
         // spawn a random room from the possible
-        int i = Random.Range(0, rooms.Length-1); // Note: Range is min inclusive and max inclusive
+        int i = Random.Range(0, rooms.Length); // Note: Range is min inclusive and max inclusive
         SpawnedRoom = Instantiate(rooms[i], transform.position, transform.rotation);
         SpawnedRoom.transform.parent = transform;
+        int j = Random.Range(0, roomLayouts.Length);
+        Debug.Log(j);
+        Instantiate(roomLayouts[j], transform.position, transform.rotation);
 
         // when the room that has spawned is an ItemRoom add it to the list of possible item rooms
         if(SpawnedRoom.layer == LayerMask.NameToLayer("ItemRoom"))

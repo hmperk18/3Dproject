@@ -44,10 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9b1fafbd22f6c4c9b307141c6d727c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doornum: 0
   rooms:
   - {fileID: 5992679544936057551, guid: 9e13abd24c6f3b943ad680799730cebe, type: 3}
   - {fileID: 1656422047123669233, guid: 3d699c2c66f78fc4b9ef8581514a27f2, type: 3}
+  roomLayouts:
+  - {fileID: 2781019644144178326, guid: 14745778414734c7da5f7f579774ce60, type: 3}
+  - {fileID: 1413677294880637501, guid: c3a193f55a8b3467f818dde223114d19, type: 3}
+  SpawnedRoom: {fileID: 0}
+  roomComplete: 0
+  doors: []
 --- !u!1001 &7842479299258160334
 PrefabInstance:
   m_ObjectHideFlags: 0
