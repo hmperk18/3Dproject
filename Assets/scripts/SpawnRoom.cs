@@ -6,6 +6,7 @@ public class SpawnRoom : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject[] rooms; // possible rooms to spawn
+    [SerializeField] GameObject[] roomLayouts;
     [SerializeField] GameObject SpawnedRoom;
     public bool roomComplete = false;
     [SerializeField] DoorScript[] doors;
