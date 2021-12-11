@@ -17,8 +17,11 @@ public class SpawnRoom : MonoBehaviour
         int i = Random.Range(0, rooms.Length); // Note: Range is min inclusive and max inclusive
         SpawnedRoom = Instantiate(rooms[i], transform.position, transform.rotation);
         SpawnedRoom.transform.parent = transform;
+
+        // spawn a layout within the room
         int j = Random.Range(0, roomLayouts.Length);
-        Instantiate(roomLayouts[j], transform.position, transform.rotation).transform.parent = transform;
+        int k = Random.Range(0, 4); // pick random orientation
+        Instantiate(roomLayouts[j], transform.position, transform.rotation * Quaternion.Euler(0,90*k,0)).transform.parent = transform;
 
         // increment the number of rooms spawned
         LevelManager.AddRoom();
