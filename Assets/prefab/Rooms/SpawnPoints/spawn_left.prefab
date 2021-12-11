@@ -50,6 +50,9 @@ MonoBehaviour:
   roomLayouts:
   - {fileID: 2781019644144178326, guid: 14745778414734c7da5f7f579774ce60, type: 3}
   - {fileID: 1413677294880637501, guid: c3a193f55a8b3467f818dde223114d19, type: 3}
+  - {fileID: 9181667429264179919, guid: 4a6ff340babca45099d9027a76e31435, type: 3}
+  - {fileID: 8062411950323921976, guid: afc7a50460bfa48298ed0adc1340bce9, type: 3}
+  - {fileID: 4290456058333199424, guid: 4f17a62c4325e48e1b1de3739c2224ef, type: 3}
   SpawnedRoom: {fileID: 0}
   roomComplete: 0
   doors: []
