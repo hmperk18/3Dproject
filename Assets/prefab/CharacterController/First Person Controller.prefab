@@ -219,8 +219,8 @@ MonoBehaviour:
       m_RotationOrder: 4
     maxGroundAcceleration: 150
     maxAirAcceleration: 20
-    gravity: 10
-    maxFallSpeed: 5
+    gravity: 13
+    maxFallSpeed: 10
     collisionFlags: 0
     velocity: {x: 0, y: 0, z: 0}
     frameVelocity: {x: 0, y: 0, z: 0}
@@ -228,8 +228,8 @@ MonoBehaviour:
     lastHitPoint: {x: Infinity, y: 0, z: 0}
   jumping:
     enabled: 1
-    baseHeight: 1
-    extraHeight: 4.1
+    baseHeight: 1.5
+    extraHeight: 0
     perpAmount: 0
     steepPerpAmount: 0.5
     jumping: 0
