@@ -47,11 +47,13 @@ MonoBehaviour:
   - {fileID: 5992679544936057551, guid: 9e13abd24c6f3b943ad680799730cebe, type: 3}
   - {fileID: 1656422047123669233, guid: 3d699c2c66f78fc4b9ef8581514a27f2, type: 3}
   roomLayouts:
-  - {fileID: 2781019644144178326, guid: 14745778414734c7da5f7f579774ce60, type: 3}
-  - {fileID: 1413677294880637501, guid: c3a193f55a8b3467f818dde223114d19, type: 3}
   - {fileID: 9181667429264179919, guid: 4a6ff340babca45099d9027a76e31435, type: 3}
   - {fileID: 4290456058333199424, guid: 4f17a62c4325e48e1b1de3739c2224ef, type: 3}
+  - {fileID: 1413677294880637501, guid: c3a193f55a8b3467f818dde223114d19, type: 3}
+  - {fileID: 7816147428245574213, guid: dcc23bfd85adb44c3aeb85322a1fec83, type: 3}
   - {fileID: 8062411950323921976, guid: afc7a50460bfa48298ed0adc1340bce9, type: 3}
+  - {fileID: 2781019644144178326, guid: 14745778414734c7da5f7f579774ce60, type: 3}
+  - {fileID: 8184965673077447572, guid: 21a85f0ec0294408381dda3773017fb5, type: 3}
   SpawnedRoom: {fileID: 0}
   roomComplete: 0
   doors: []
