@@ -60,7 +60,14 @@ public class LevelManager : MonoBehaviour
     private void _IncreaseScore()
     {
         currBooks += 1;
-        scoreText.text = "x " + currBooks.ToString();
+        if(currBooks > 9) // avoid weird formatting when at 2 digits
+        {
+            scoreText.text = "x  " + currBooks.ToString();
+        }
+        else
+        {
+            scoreText.text = "x " + currBooks.ToString();
+        }
         checkWin();
     }
 
@@ -99,5 +106,18 @@ public class LevelManager : MonoBehaviour
         //todo
         player.GetComponent<CharacterMotor>().canControl = false;
         winPanel.SetActive(true);
+        scoreText.color = Color.white;
+    }
+
+    // reset for when replay button is clicked
+    public static void ReplayGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // load main menu when button is clicked
+    public static void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

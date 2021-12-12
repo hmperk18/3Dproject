@@ -1,17 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-// This script is attached to GoldCoin mesh
-public class CoinScript : MonoBehaviour
+// This script is for the collectable books
+public class BookScript : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -21,13 +12,14 @@ public class CoinScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // player picks up the books
         if (other.CompareTag("Player"))
         {
             // Add a book to the score
             LevelManager.IncreaseScore();
 
             // open door
-            // parent = "room setting" parent.parent = 
+                // parent = "room setting" parent.parent = "spawn_[direction]"
             transform.parent.parent.GetComponent<SpawnRoom>().CompleteRoom();
 
             // Destory the book 
