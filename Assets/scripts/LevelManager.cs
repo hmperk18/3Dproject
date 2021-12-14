@@ -90,13 +90,22 @@ public class LevelManager : MonoBehaviour
     }
 
     // check that the minimum score to win has been achieved
-    private void checkWin()
+    public void checkWin()
     {
         // open the door if score is enough
         if (currBooks == roomCount)
         {
             // todo
             _WinGame();
+        }
+    }
+
+    // TODO REMOVE - temp for video
+    public void QuickWin()
+    {
+        while(currBooks <= roomCount)
+        {
+            IncreaseScore();
         }
     }
 
