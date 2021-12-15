@@ -8,11 +8,13 @@ public class SpawnRoom : MonoBehaviour
     [SerializeField] GameObject[] rooms; // possible rooms to spawn
     [SerializeField] GameObject[] roomLayouts;
     [SerializeField] GameObject SpawnedRoom;
+
     public bool roomComplete = false;
     [SerializeField] DoorScript[] doors;
 
     void Start()
     {
+
         // spawn a random room from the possible
         int i = Random.Range(0, rooms.Length); // Note: Range is min inclusive and max inclusive
         SpawnedRoom = Instantiate(rooms[i], transform.position, transform.rotation);
@@ -25,12 +27,6 @@ public class SpawnRoom : MonoBehaviour
 
         // increment the number of rooms spawned
         LevelManager.AddRoom();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     // get list of doors to open upon completion
@@ -66,8 +62,6 @@ public class SpawnRoom : MonoBehaviour
             door.setDoor(true);
             roomComplete = true;
         }
-
-        // TODO - play unlock sound
     }
 
     public IEnumerator Test()
