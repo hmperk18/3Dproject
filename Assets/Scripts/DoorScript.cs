@@ -4,43 +4,23 @@ using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
-    private Animator doorAnimatorRef;
     [SerializeField] SpawnRoom parent;
     [SerializeField] Transform door; // the door to open/close
     Quaternion open;
     Quaternion close;
     bool isClosed = false;
 
+    private AudioSource audioSource;
+    [SerializeField] AudioClip openCloseSound;
+
     private void Awake()
     {
         parent = GetComponentInParent<SpawnRoom>();
         open = Quaternion.Euler(0, 90, 0); // save the initial rotation
         close = transform.rotation; // the parents rotation is 0,0,0 = closed
+
+        audioSource = GetComponent<AudioSource>();
     }
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        // Open door
-        if (other.gameObject.CompareTag("Door"))
-        {
-            Transform doorRef = other.transform.parent.Find("Door");
-            Animator animator = doorRef.GetComponent<Animator>();
-            doorAnimatorRef = animator;
-            doorAnimatorRef.SetBool("isOpen", true);
-        }
-    }*/
 
     private void OnTriggerExit(Collider other)
     {
@@ -60,12 +40,15 @@ public class DoorScript : MonoBehaviour
     // open = true to open the door, false to close
     public void setDoor(bool open)
     {
-        if(open)
+
+        audioSource.PlayOneShot(openCloseSound);
+        if (open)
         {
             door.localRotation = this.open;
             isClosed = true;
         } else
         {
+            // play only on close
             door.rotation = close;
             isClosed = true;
         }

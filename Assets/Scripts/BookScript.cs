@@ -3,6 +3,7 @@ using UnityEngine;
 // This script is for the collectable books
 public class BookScript : MonoBehaviour
 {
+
     // Update is called once per frame
     void Update()
     {
@@ -15,6 +16,7 @@ public class BookScript : MonoBehaviour
         // player picks up the books
         if (other.CompareTag("Player"))
         {
+
             // Add a book to the score
             LevelManager.IncreaseScore();
 

@@ -15,15 +15,17 @@ public class LevelManager : MonoBehaviour
     static public int roomCount;  // number of rooms with books
     private int currBooks; // current hearts
     [SerializeField] Text scoreText; // visible score
-
-
     [SerializeField] GameObject winPanel;
+
+    private AudioSource audioSource;
+    [SerializeField] AudioClip bookCollectionSound;
 
     private void Awake()
     {
         // init vars
         currHearts = maxHearts;
         instance = this;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // increment room count
@@ -60,7 +62,11 @@ public class LevelManager : MonoBehaviour
     private void _IncreaseScore()
     {
         currBooks += 1;
-        if(currBooks > 9) // avoid weird formatting when at 2 digits
+
+        // play sound here because book get destroyed before audio finishes
+        audioSource.PlayOneShot(bookCollectionSound);
+
+        if (currBooks > 9) // avoid weird formatting when at 2 digits
         {
             scoreText.text = "x  " + currBooks.ToString();
         }
