@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 0f55c4cdb09394d45bb38a176dadfc26
   - enabled: 1
-    path: Assets/Scenes/HailleWorking.unity
+    path: Assets/Scenes/GameScene.unity
     guid: 62c262ee354d32c468d5692ed9755da1
   m_configObjects: {}
