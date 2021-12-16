@@ -7,11 +7,6 @@ public class LevelManager : MonoBehaviour
     static public LevelManager instance;
     [SerializeField] GameObject player; // reference to the player
 
-    static private int maxHearts = 3; // number of hits
-    private int currHearts; // current hearts
-    [SerializeField] Image[] lives = new Image[maxHearts]; // heart icons
-    [SerializeField] Sprite emptyHeart;
-
     static public int roomCount;  // number of rooms with books
     private int currBooks; // current hearts
     [SerializeField] Text scoreText; // visible score
@@ -20,10 +15,18 @@ public class LevelManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] AudioClip bookCollectionSound;
 
+    /*
+     * unused due to enemy not working
+    static private int maxHearts = 3; // number of hits
+    private int currHearts; // current hearts
+    [SerializeField] Image[] lives = new Image[maxHearts]; // heart icons
+    [SerializeField] Sprite emptyHeart;
+    */
+
     private void Awake()
     {
         // init vars
-        currHearts = maxHearts;
+        // currHearts = maxHearts;
         instance = this;
         audioSource = GetComponent<AudioSource>();
     }
@@ -37,12 +40,6 @@ public class LevelManager : MonoBehaviour
     private void _AddRoom()
     {
         roomCount++;
-    }
-    
-    // player takes damage
-    public static void Damaged()
-    {
-        instance._Damaged();
     }
 
     // display win screen
@@ -75,24 +72,6 @@ public class LevelManager : MonoBehaviour
             scoreText.text = "x " + currBooks.ToString();
         }
         checkWin();
-    }
-
-    // remove heart icons from UI for each hit taken
-    private void _Damaged()
-    {
-        currHearts--;
-
-        // make heart an empty heart sprite after taking damage
-        lives[currHearts].sprite = emptyHeart;
-
-        // reload the game if at zero hearts
-        // TODO - pop up lost screen?
-            // return at hallway or new run options
-        if (currHearts == 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
     }
 
     // check that the minimum score to win has been achieved
@@ -135,4 +114,31 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+
+    // player takes damage
+    /*
+    public static void Damaged()
+    {
+        instance._Damaged();
+    }
+    
+    // remove heart icons from UI for each hit taken
+        // unused due to enemy
+    private void _Damaged()
+    {
+        currHearts--;
+
+        // make heart an empty heart sprite after taking damage
+        lives[currHearts].sprite = emptyHeart;
+
+        // reload the game if at zero hearts
+        // TODO - pop up lost screen?
+            // return at hallway or new run options
+        if (currHearts == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+    }*/
 }
