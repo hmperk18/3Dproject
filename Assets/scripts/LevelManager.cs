@@ -50,6 +50,9 @@ public class LevelManager : MonoBehaviour
         // currHearts = maxHearts; // unsure due to no enemy
         instance = this;
         audioSource = GetComponent<AudioSource>();
+        player.GetComponent<CharacterMotor>().canControl = true;
+        MouseLook.paused = false;
+
     }
 
     // for when a room is spawned
