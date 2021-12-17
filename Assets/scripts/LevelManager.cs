@@ -11,6 +11,9 @@ public class LevelManager : MonoBehaviour
     private int currBooks; // current hearts
     [SerializeField] Text scoreText; // visible score
     [SerializeField] GameObject winPanel;
+    [SerializeField] GameObject pausePanel;
+    [SerializeField] bool pausing = false; // is the pause menu up
+
 
     private AudioSource audioSource;
     [SerializeField] AudioClip bookCollectionSound;
@@ -22,6 +25,23 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Image[] lives = new Image[maxHearts]; // heart icons
     [SerializeField] Sprite emptyHeart;
     */
+
+    private void Update()
+    {
+        // pause menu
+        if(Input.GetKeyDown("escape") && !winPanel.activeInHierarchy)
+        {
+            if(!pausing)
+            {
+                // turn on
+                _TogglePause(true);
+            } else {
+                // turn off
+                _TogglePause(false);
+            }
+        }
+        
+    }
 
     private void Awake()
     {
@@ -85,22 +105,30 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // TODO REMOVE - temp for video
-    public void QuickWin()
-    {
-        while(currBooks <= roomCount)
-        {
-            IncreaseScore();
-        }
-    }
-
     // display a message to the winner about their score
     private void _WinGame()
     {
-        //todo
         player.GetComponent<CharacterMotor>().canControl = false;
         winPanel.SetActive(true);
+        MouseLook.paused = true;
         scoreText.color = Color.white;
+    }
+
+    private void _TogglePause(bool pausing)
+    {
+        this.pausing = pausing;
+        pausePanel.SetActive(pausing);
+        if (pausing)
+        {
+            player.GetComponent<CharacterMotor>().canControl = false;
+            MouseLook.paused = true;
+            scoreText.color = Color.white;
+        } else {
+            player.GetComponent<CharacterMotor>().canControl = true;
+            MouseLook.paused = false;
+            scoreText.color = Color.black;
+        }
+        
     }
 
     // reset for when replay button is clicked
