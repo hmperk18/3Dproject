@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-// NOTE: This code is taken from Lab 12 - 3D Graphics (3DIntroductionVillageDemo), with the same file name
+// NOTE: This code is from Lab 12 - 3D Graphics (3DIntroductionVillageDemo), with the same file name
 
 /// MouseLook rotates the transform based on the mouse delta.
 /// Minimum and Maximum values can be used to constrain the possible rotation
