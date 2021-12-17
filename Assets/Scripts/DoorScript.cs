@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
-    [SerializeField] SpawnRoom parent;
+    [SerializeField] SpawnRoom parent; // reference to the spawn script of the parent node
+    
     [SerializeField] Transform door; // the door to open/close
-    Quaternion open;
-    Quaternion close;
-    bool isClosed = false;
+    private Quaternion open;
+    private Quaternion close;
 
     private AudioSource audioSource;
     [SerializeField] AudioClip openCloseSound;
@@ -16,9 +16,10 @@ public class DoorScript : MonoBehaviour
     private void Awake()
     {
         parent = GetComponentInParent<SpawnRoom>();
-        open = Quaternion.Euler(0, 90, 0); // save the initial rotation
-        close = transform.rotation; // the parents rotation is 0,0,0 = closed
+        open = Quaternion.Euler(0, 90, 0);              // save the initial rotation
+        close = transform.rotation;                     // parent's rotation is 0,0,0 = closed
 
+        // for playing opening/closing sound
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -29,7 +30,7 @@ public class DoorScript : MonoBehaviour
         {
             setDoor(false);
 
-            // prevent other possible door interactions
+            // prevent player from closing the door when they leave the room
             transform.GetComponent<BoxCollider>().enabled = false;
 
             // get the doors to open when the player enters the room
@@ -37,20 +38,19 @@ public class DoorScript : MonoBehaviour
         }
     }
 
-    // open = true to open the door, false to close
+    // change the state of the door
+        // open = true to open the door, false to close
     public void setDoor(bool open)
     {
-
+        // play sound on open/close
         audioSource.PlayOneShot(openCloseSound);
+
+        // change the door state accordingly
         if (open)
         {
             door.localRotation = this.open;
-            isClosed = true;
-        } else
-        {
-            // play only on close
-            door.rotation = close;
-            isClosed = true;
+        } else {
+            door.rotation = this.close;
         }
     }
 }

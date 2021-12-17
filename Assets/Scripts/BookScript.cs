@@ -16,11 +16,10 @@ public class BookScript : MonoBehaviour
         // player picks up the books
         if (other.CompareTag("Player"))
         {
-
             // Add a book to the score
             LevelManager.IncreaseScore();
 
-            // open door
+            // open doors
                 // parent = "room setting" parent.parent = "spawn_[direction]"
             transform.parent.parent.GetComponent<SpawnRoom>().CompleteRoom();
 

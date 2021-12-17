@@ -14,12 +14,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject pausePanel;
     [SerializeField] bool pausing = false; // is the pause menu up
 
-
+    // for playing the score sound
     private AudioSource audioSource;
     [SerializeField] AudioClip bookCollectionSound;
 
     /*
      * unused due to enemy not working
+     * 
     static private int maxHearts = 3; // number of hits
     private int currHearts; // current hearts
     [SerializeField] Image[] lives = new Image[maxHearts]; // heart icons
@@ -28,7 +29,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        // pause menu
+        // pause menu if pressed escape and the winpanel is not active
         if(Input.GetKeyDown("escape") && !winPanel.activeInHierarchy)
         {
             if(!pausing)
@@ -46,17 +47,18 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         // init vars
-        // currHearts = maxHearts;
+        // currHearts = maxHearts; // unsure due to no enemy
         instance = this;
         audioSource = GetComponent<AudioSource>();
     }
 
-    // increment room count
+    // for when a room is spawned
     public static void AddRoom()
     {
         instance._AddRoom();
     }
 
+    // increment private var room count
     private void _AddRoom()
     {
         roomCount++;
@@ -68,22 +70,23 @@ public class LevelManager : MonoBehaviour
         instance._WinGame();
     }
 
-    // Book color corresponds to the idx in the keys list
+    // method that can be called by the collected book to increase the score
     public static void IncreaseScore()
     {
-
         instance._IncreaseScore();
     }
 
     // private method to increase score
     private void _IncreaseScore()
     {
+        // increment score
         currBooks += 1;
 
         // play sound here because book get destroyed before audio finishes
         audioSource.PlayOneShot(bookCollectionSound);
 
-        if (currBooks > 9) // avoid weird formatting when at 2 digits
+        // avoid weird formatting when at 2 digits
+        if (currBooks > 9) 
         {
             scoreText.text = "x  " + currBooks.ToString();
         }
@@ -100,33 +103,39 @@ public class LevelManager : MonoBehaviour
         // open the door if score is enough
         if (currBooks == roomCount)
         {
-            // todo
             _WinGame();
         }
     }
 
-    // display a message to the winner about their score
+    // display a message to the winner
     private void _WinGame()
     {
-        player.GetComponent<CharacterMotor>().canControl = false;
+        // turn on the panel and prevent further movement
         winPanel.SetActive(true);
-        MouseLook.paused = true;
-        scoreText.color = Color.white;
+        player.GetComponent<CharacterMotor>().canControl = false;
+        MouseLook.paused = true; // so the player cannot pause during winscreen
+        scoreText.color = Color.white; // make score visible over black screen
     }
 
+    // turn on/off the pause menu
+        // pausing = true if player is pausing the game, false if not
     private void _TogglePause(bool pausing)
     {
+        // update pausing bool and set panel active as needed
         this.pausing = pausing;
         pausePanel.SetActive(pausing);
-        if (pausing)
+        if (pausing) // game is being paused
         {
+            // prevent player/camera motion
             player.GetComponent<CharacterMotor>().canControl = false;
             MouseLook.paused = true;
-            scoreText.color = Color.white;
-        } else {
+            scoreText.color = Color.white; // make score clearer over the black screen
+        } else { // done pausing
+
+            // enable player/camera motion
             player.GetComponent<CharacterMotor>().canControl = true;
             MouseLook.paused = false;
-            scoreText.color = Color.black;
+            scoreText.color = Color.black; // retun to score to orignal
         }
         
     }
@@ -143,16 +152,16 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-
-    // player takes damage
     /*
+     * unused due to enemy, but was developed for when enemy attacked the player
+     * 
+    // player takes damage
     public static void Damaged()
     {
         instance._Damaged();
     }
     
     // remove heart icons from UI for each hit taken
-        // unused due to enemy
     private void _Damaged()
     {
         currHearts--;
